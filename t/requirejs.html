@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="./qunit/qunit-1.10.0.css" />
+<script src="./qunit/qunit-1.10.0.js"></script>
+<script src="./qunit/qunit-tap.js"></script>
+<script>
+qunitTap(
+    QUnit
+  , function () { console.log.apply(console, arguments); }
+);
+QUnit.config.autostart = false;
+</script>
+<title>java version manager</title>
+</head>
+<body>
+ <div id="qunit"></div>
+ <div id="qunit-fixture"></div>
+</body>
+<script src="./library/require.js" data-main="./basic_t.js"></script>
