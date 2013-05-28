@@ -75,6 +75,9 @@
     test('case "JDK7u40"', function () {
         ok( version.isValid("JDK7u40") );
     });
+    test('case "JDK1.6u11"', function () {
+        ok( version.isValid("JDK1.6u11") );
+    });
     test('case "hoge"', function () {
         ok( ! version.isValid("hoge") );
     });
@@ -108,7 +111,13 @@
         is( v.familyNumber, 12 );
         is( v.updateNumber, 0);
     });
-    test('case ""', function () {
+    test('case "JDK1.6u18"', function () {
+        var v = version.parse("JDK1.6u18");
+        ok(v);
+        is( v.familyNumber, 1.6);
+        is( v.updateNumber, 18);
+    });
+    test('case "" empty string', function () {
         throws(
             function () { version.parse("") }
           , /can not parse/
@@ -136,10 +145,10 @@
 
     mod('*: ._numbering()');
     test('u40._numbering()', function () {
-        var us = ('7u40 8u0 9u9 10u1').split(' ').map(function (p) {
+        var us = ('7u40 8u0 9u9 10u1 1.6u11').split(' ').map(function (p) {
             return version.parse("JDK" + p);
         });
-        var res = [ 740, 800, 909, 1001 ];
+        var res = [ 7040, 8000, 9009, 10001, 1611 ];
         us.forEach(function (jdkNuNN, i) {
             is( jdkNuNN._numbering(), res[i] );
         });
